@@ -40,8 +40,11 @@ function PokeHeader({
   loading,
   regions = [],
   locations = [],
+  changeRegion,
   changeLocation,
+  changeArea,
   areas = [],
+  handleExplore,
 }) {
   return (
     <header style={styles}>
@@ -51,13 +54,13 @@ function PokeHeader({
           'Loading...'
         ) : (
           <React.Fragment>
-            <PokeSelector items={regions} />
+            <PokeSelector handleChange={changeRegion} items={regions} />
             <PokeSelector handleChange={changeLocation} items={locations} />
-            <PokeSelector items={areas} />
+            <PokeSelector handleChange={changeArea} items={areas} />
           </React.Fragment>
         )}
       </div>
-      <PokeButton>Explore</PokeButton>
+      <PokeButton handleExplore={handleExplore}>Explore</PokeButton>
     </header>
   );
 }
