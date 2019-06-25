@@ -1,25 +1,72 @@
 import React from 'react'
 
 import PokeButton from './PokeButton'
+
+const h3 = {
+    color: 'white',
+    backgroundColor: '#EF5350',
+    padding: '8px',
+    margin: '0',
+    textAlign: 'center', 
+    textTransform: 'uppercase'
+}
+
+const details = {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '1 0 auto',
+    padding: '8px'
+}
+
+const fieldset = {
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+}
+
+const found = {
+    flex: '1 0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+}
+
 export default function PokeEncounter(props) {
     return (
-        <div className='encounter'>
-            <h3>Encounter</h3>
-            <div className='details'>
-                {console.log(props.capture)}
-                {props.capture ?
+        <div style={{
+            height: 'calc(100vh - 150px)',
+            display: 'flex',
+            flexDirection: 'column',
+            flex: '1',
+            boxSizing: 'border-box',
+            backgroundColor: 'white',
+            boxShadow: '5px 5px 7px 0px rgba(0,0,0,0.75)',
+            margin: '8px'
+        }}>
+            <h3 style={h3}>Encounter</h3>
+            <div style={details}>
+                {props.capture === true?
                 <React.Fragment>
-                <fieldset>
+                <fieldset style={fieldset}>
                     <legend>You Found A...</legend>
-                    <div className='found'>
-                        <h3>{props.pokemon.name}</h3>
-                        <img src={props.pokemon.pic} alt=''/>
+                    <div style={found}>
+                        <h3 style={{
+                            backgroundColor: 'inherit',
+                            color: 'black'
+                        }}>{props.pokemon.name}</h3>
+                        <img style={{
+                            width: '200px',
+                            margin: '0 auto'}
+                        }src={props.pokemon.pic} alt=''/>
                         <PokeButton handleExplore={props.handleCapture}>Explore</PokeButton>
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset style={fieldset}>
                     <legend>Details</legend>
-                    {console.log(props.pokemon.stats)}
+                    {props.pokemon.stats && 
                     <ul>
                         <li>speed: {props.pokemon.stats[0].base_stat}</li>
                         <li>special-defense: {props.pokemon.stats[1].base_stat}</li>
@@ -28,9 +75,11 @@ export default function PokeEncounter(props) {
                         <li>attack: {props.pokemon.stats[4].base_stat}</li>
                         <li>hp: {props.pokemon.stats[5].base_stat}</li>
                     </ul>
+                    }
                 </fieldset>
                 </React.Fragment>
-                : <p>Captured poliwhirl, explore to find more pokemon</p>
+                : props.capture === false ? <p>Captured {props.pokemon.name}, explore to find more pokemon</p>
+                : <p></p>
                 }
             </div>
         </div>

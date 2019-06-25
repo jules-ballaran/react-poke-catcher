@@ -19,7 +19,7 @@ class App extends React.Component {
       possibleEncounters: [],
       encounteredPokemon: {},
       captured: [],
-      capture: false,
+      capture: null,
     };
   }
 
@@ -96,7 +96,6 @@ class App extends React.Component {
       let i = Math.floor(Math.random() * this.state.possibleEncounters.length)
       var pokemon = {}
       pokemon.name = this.state.possibleEncounters[i].pokemon.name
-      
       axios
         .get(this.state.possibleEncounters[i].pokemon.url)
         .then(res => {
