@@ -61,7 +61,7 @@ export default function PokeEncounter(props) {
                             width: '200px',
                             margin: '0 auto'}
                         }src={props.pokemon.pic} alt=''/>
-                        <PokeButton handleExplore={props.handleCapture}>Explore</PokeButton>
+                        <PokeButton handleExplore={props.handleCapture}>Capture</PokeButton>
                     </div>
                 </fieldset>
                 <fieldset style={fieldset}>

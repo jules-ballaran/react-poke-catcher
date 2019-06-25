@@ -12,7 +12,7 @@ const styles = {
 }
 
 function PokeButton(props) {
-  return <button onClick={props.handleExplore}style={styles}>{props.children}</button>
+  return <button onClick={props.handleExplore} style={styles}>{props.children}</button>
 }
 
 export default PokeButton;
