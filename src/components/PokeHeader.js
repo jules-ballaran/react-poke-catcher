@@ -36,12 +36,19 @@ const styles = {
   ...flexCenter,
 };
 
+const label = {
+  color: 'white',
+}
+
 function PokeHeader({
   loading,
   regions = [],
   locations = [],
+  changeRegion,
   changeLocation,
+  changeArea,
   areas = [],
+  handleExplore,
 }) {
   return (
     <header style={styles}>
@@ -51,13 +58,13 @@ function PokeHeader({
           'Loading...'
         ) : (
           <React.Fragment>
-            <PokeSelector items={regions} />
-            <PokeSelector handleChange={changeLocation} items={locations} />
-            <PokeSelector items={areas} />
+            <label style={label}>Regions :<PokeSelector handleChange={changeRegion} items={regions} /></label>
+            <label style={label}>Locations :<PokeSelector handleChange={changeLocation} items={locations} /></label>
+            <label style={label}>Areas :<PokeSelector handleChange={changeArea} items={areas} /></label>
           </React.Fragment>
         )}
       </div>
-      <PokeButton>Explore</PokeButton>
+      <PokeButton handleExplore={handleExplore}>Explore</PokeButton>
     </header>
   );
 }
